@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="MainContainer">
+      <div class="DateTimeContainer">
+        <!-- for lock  -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          id="lock"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"
+          />
+        </svg>
+        <!-- for unlock  -->
+        <!-- <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          id="unlock"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2zM3 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1H3z"
+          />
+        </svg> -->
+        <h1 id="curr_time">10:20</h1>
+        <p id="curr_date">wed,12 may</p>
+      </div>
+      <div class="NotificationContainer">
+        <img src="images/msg.png" alt="This is a notificatiion center" />
+      </div>
+      <div class="InputContainer">
+        <input
+          type="number"
+          id="pin"
+          placeholder="Enter Your Password"
+        /><br /><br />
+        <button id="btn">Login</button>
+      </div>
+      <div class="OutputContainer">
+        <p id="RetriesLeft">You Have <span id="display">3</span> tries left</p>
+        <h1 id="succmess"></h1>
+        <p id="errormess"></p>
+        <p id="Warning"></p>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      const date = new Date();
+      const n = date.toDateString(); //Store date and day
+      const time = date.toLocaleTimeString(); // store time only
+
+      var curr_date = document.getElementById("curr_date");
+      var curr_time = document.getElementById("curr_time");
+      curr_date.innerHTML = n;
+      curr_time.innerHTML = time;
+
+      var count = 0;
+      var btn = document.getElementById("btn");
+      var disp = document.getElementById("display");
+      var er = document.getElementById("errormess");
+      var war = document.getElementById("Warning");
+      btn.onclick = function () {
+        while (count < 3) {
+          const pincode = document.getElementById("pin").value;
+          if (pincode == "1234") {
+            succmess.innerHTML = "Welcome Master";
+            er.innerHTML = "Your Device is unlocked successfully.";
+            document.getElementById("lock").style.display === "none";
+            document.getElementById("btn").disabled = true;
+            document.getElementById("succmess").style.color = "green";
+            document.getElementById("RetriesLeft").style.display = "none";
+            break;
+          } else {
+            count++;
+            disp.innerHTML = 3 - count;
+            er.innerHTML = "You have entered wrong password";
+            document.getElementById("errormess").style.color = "red";
+            document.getElementById("display").style.color = "#ff0000";
+            break;
+          }
+        }
+        if (count >= 3) {
+          document.getElementById("btn").disabled = true;
+          document.getElementById("Warning").style.color = "#ff0000";
+          war.innerHTML =
+            "Your System has been locked for 2 minut. Please try again after that";
+        }
+      };
+    </script>
+  </body>
+</html>
