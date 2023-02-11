@@ -34,6 +34,14 @@ body {
     text-align: center;
  
 }
+.Portfolio{
+    margin-top: 0;
+    width: 260px;
+    text-align: center;
+    margin-left: 8%;
+    text-decoration: none;
+}
+
 @media only screen and (max-width: 600px) {
     body {
       background-color: lightblue;
@@ -42,7 +50,7 @@ body {
         background-image: url('images/Phone.png');
         margin-left:16%;
         height: 715px;
-        width: 500px;
+        width: 400px;
         background-repeat: no-repeat;
     }
     .DateTimeContainer{
@@ -53,14 +61,21 @@ body {
     }
     .NotificationContainer img{
         width: 290px;
-        margin-left: 6%;
+        margin-left: 8%;
+    }
+    .Portfolio{
+        margin-top: 0;
+        width: 260px;
+        text-align: center;
+        margin-left: 8%;
+        text-decoration: none;
     }
     .InputContainer{
         width: 260px;
         text-align: center;
         padding-top: 5%;
         margin-left: 8%;
-    }
+    } 
     .InputContainer button{
         margin-left: 4%;
     }
