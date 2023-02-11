@@ -40,7 +40,7 @@ body {
     }
     .MainContainer{
         background-image: url('images/Phone.png');
-        padding-left:16%;
+        padding-left:10%;
         height: 715px;
         width: 500px;
         background-repeat: no-repeat;
